@@ -43,7 +43,7 @@ Test lịch sử (lấy data lưu database): https://etherscan.io/myapikey
       vd: https://api-sepolia.etherscan.io/api?module=account&action=balance
    &address=0x525E99c025EF36c438D1Dd17a7AB200CD4382838      //địa chỉ contract address ( key bên dưới )
    &tag=latest
-   &apikey=AIZUGF6YV1J2WJCKPXVBYV8D9QFR59Y6W8   //api-key trong etherscan
+   &apikey=   //api-key trong etherscan
 
 1_faucet_contracts.js
 =====================
