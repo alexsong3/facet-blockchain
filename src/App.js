@@ -93,6 +93,7 @@ function App() {
   return (
     <div className="faucet-wrapper">
       <div className="faucet">
+        <div className="is-size-5">DApp: The Joker</div>
         <div className="balance-view is-size-2">
           Current Balance: <strong>{balance}</strong> ETH
         </div>
