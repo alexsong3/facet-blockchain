@@ -1,70 +1,77 @@
-# Getting Started with Create React App
+https://github.com/eamondang/faucet-source/tree/master/src
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+https://web3js.readthedocs.io/en/v1.10.0/web3-eth.html#sendtransaction
 
-## Available Scripts
+https://trufflesuite.com/docs/truffle/reference/configuration/
 
-In the project directory, you can run:
+fix err: https://www.alchemy.com/blog/how-to-polyfill-node-core-modules-in-webpack-5
 
-### `npm start`
+https://docs.bscscan.com/getting-started/creating-an-account
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+https://docs.bnbchain.org/docs/truffle-new
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+truffle migrate
+truffle migrate --reset
 
-### `npm test`
+evm: https://etherscan.io/login
+     https://bscscan.com/myapikey
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+api-key 'infura': https://app.infura.io/dashboard/ethereum/ea6174d876fb442db9e72b32e488e70e/settings/endpoints
+      docs triển khai: https://docs.infura.io/tutorials/ethereum/deploy-a-contract-using-truffle
 
-### `npm run build`
+Kiếm eth testnet: https://sepoliafaucet.com/
+Đọc thêm về testnet: https://www.alchemy.com/overviews/what-are-testnets
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Thằng để triển khai smart contract: https://dashboard.alchemy.com/
+                    docs: https://docs.alchemy.com/reference/ethereum-api-quickstart
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+ví main: broken chat foam pyramid credit target excuse trumpet purpose law index put
 
-### `npm run eject`
+Triển khai mạng 'Sepolia': truffle migrate --reset --network sepolia
+               xong paste 'contract address' vào tìm https://etherscan.io/ để tra thông tin contract
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Triển khai mạng 'mainnet': truffle migrate --network mainnet
+ 
+Trường hợp lỗi FE gọi: has not been deployed to detected network (network/artifact mismatch) => chạy lại smart contract 
+tuỳ theo môi trường phát triển
+      Nếu môi trường localhost thì sẽ tương thích với môi trường evm testnet hoặc mainnet
+      Nhưng migrate môi trường test hoặc mainnet thì thích hợp dc cả môi trường localhost khi chuyển ví MetaMask
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Test lịch sử (lấy data lưu database): https://etherscan.io/myapikey
+      docs: https://docs.etherscan.io/v/sepolia-etherscan/       tuỳ chọn theo mạng evm 
+      vd: https://api-sepolia.etherscan.io/api?module=account&action=balance
+   &address=0x525E99c025EF36c438D1Dd17a7AB200CD4382838      //địa chỉ contract address ( key bên dưới )
+   &tag=latest
+   &apikey=AIZUGF6YV1J2WJCKPXVBYV8D9QFR59Y6W8   //api-key trong etherscan
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1_faucet_contracts.js
+=====================
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+   Replacing 'Faucet'
+   ------------------
+   > transaction hash:    0xc6287a7ecc13046d0584d2bc3c1cab3198c5a76e0a00cc67e2c11cca90e28afb
+   > Blocks: 1            Seconds: 9
+   > contract address:    0x525E99c025EF36c438D1Dd17a7AB200CD4382838
+   > block number:        3736641
+   > block timestamp:     1687337532
+   > account:             0x37A884b405578a902Ba6544E0e4F2eC2E5A5e96f
+   > balance:             0.488836294616475484
+   > gas used:            544291 (0x84e23)
+   > gas price:           2.562521337 gwei
+   > value sent:          0 ETH
+   > total cost:          0.001394757301037067 ETH
 
-## Learn More
+   Pausing for 2 confirmations...
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   -------------------------------
+   > confirmation number: 1 (block: 3736642)
+   > confirmation number: 2 (block: 3736643)
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:     0.001394757301037067 ETH
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Summary
+=======
+> Total deployments:   1
+> Final cost:          0.001394757301037067 ETH
