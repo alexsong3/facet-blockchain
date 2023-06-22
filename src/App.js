@@ -93,7 +93,7 @@ function App() {
     <div className="faucet-wrapper">
       <div className="faucet">
         <div className="is-size-5">DApp: The Joker</div>
-        {/* <div className='is-size-5'>“Joker luôn muốn gợi lên phần đen tối trong mỗi con người!”</div> */}
+        <div className='is-size-5'>“Joker luôn muốn gợi lên phần đen tối trong mỗi con người!”</div>
         <div className="balance-view is-size-2">
           Current Balance: <strong>{balance}</strong> ETH
         </div>
