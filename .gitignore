@@ -1,6 +1,13 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 .env
+/contracts
+/migrations
+/test
+.secret
+/truffle-config.js
+/README.md
+.gitattributes
 
 # dependencies
 /node_modules
