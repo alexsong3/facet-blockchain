@@ -3,6 +3,8 @@ import Web3 from "web3";
 import { useCallback, useState, useEffect } from 'react';
 import detectEthereumProvider from "@metamask/detect-provider";
 import { loadContract } from "./utils/load-contract";
+//antd
+import { message } from 'antd';
 
 function App() {
 
@@ -63,7 +65,6 @@ function App() {
       const { contract, web3 } = web3Api
       const balance = await web3.eth.getBalance(contract.address)
       setBalance(web3.utils.fromWei(balance, "ether"))
-
     }
 
     web3Api.contract && loadBalance()
@@ -71,29 +72,64 @@ function App() {
 
   //Thêm eth, donate
   const addFunds = useCallback(async () => {
-    const { contract, web3 } = web3Api
-    await contract.addFunds({
-      from: account,
-      value: web3.utils.toWei("0.001", "ether")
-    })
-    reloadEffect()
+    if (account) {
+      const { contract, web3 } = web3Api
+      try {
+        await contract.addFunds({
+          from: account,
+          value: web3.utils.toWei("0.001", "ether")
+        })
+        info('Donate thành công!')
+      } catch (error) {
+        // console.log(error)
+        info('Giao dịch đã huỷ bỏ!')
+      }
+      reloadEffect()
+    } else {
+      info('Vui lòng kết nối ví MetaMask - Mạng Sepolia test!')
+    }
   }, [web3Api, account])
 
   //rút eth
   const withdraw = async () => {
-    const { contract, web3 } = web3Api
-    const withdrawAmount = web3.utils.toWei("0.0005", "ether")
-    await contract.withdraw(withdrawAmount, {
-      from: account
-    })
-    reloadEffect()
+    if (account) {
+      const { contract, web3 } = web3Api
+      try {
+        const withdrawAmount = web3.utils.toWei("0.0005", "ether")
+        const song = await contract.withdraw(withdrawAmount, {
+          from: account
+        })
+        info('Rút thành công!')
+      } catch (error) {
+        info('Giao dịch đã huỷ bỏ!')
+      }
+      reloadEffect()
+    } else {
+      info('Vui lòng kết nối ví MetaMask - Mạng Sepolia test!')
+    }
   }
+
+  //Liên kết ví MetaMask
+  const connectWallets = async () => {
+    try {
+      await web3Api.provider.request({ method: "eth_requestAccounts" })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  ///antd
+  const [messageApi, contextHolder] = message.useMessage();
+  const info = (message) => {
+    messageApi.info(message);
+  };
 
   return (
     <div className="faucet-wrapper">
+      {contextHolder}
       <div className="faucet">
         <div className="is-size-5">DApp: The Joker</div>
-        <div className='is-size-5'>“Joker luôn muốn gợi lên phần đen tối trong mỗi con người!”</div>
+        {/* <div className='is-size-5'>“Joker luôn muốn gợi lên phần đen tối trong mỗi con người!”</div> */}
         <div className="balance-view is-size-2">
           Current Balance: <strong>{balance}</strong> ETH
         </div>
@@ -105,9 +141,7 @@ function App() {
         >Withdraw</button>
         {!account &&
           <button className="button is-link"
-            onClick={() =>
-              web3Api.provider.request({ method: "eth_requestAccounts" })
-            }
+            onClick={() => connectWallets()}
           >
             Connect Wallets
           </button>
