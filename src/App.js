@@ -31,11 +31,11 @@ function App() {
   useEffect(() => {
     const loadProvider = async () => {
       const provider = await detectEthereumProvider()
-      const contract = await loadContract("Faucet", provider)
 
       // debugger
 
       if (provider) {
+        const contract = await loadContract("Faucet", provider)
         setAccountLister(provider)
         // provider.request({ method: "eth_requestAccounts" })
         setWeb3Api({
