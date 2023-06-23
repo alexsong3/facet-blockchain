@@ -116,7 +116,8 @@ function App() {
     try {
       await web3Api.provider.request({ method: "eth_requestAccounts" })
     } catch (error) {
-      console.log(error)
+      // console.log(error)
+      info('Vui lòng tải ví MetaMask để thao tác- Mạng Sepolia test!')
     }
   }
 
