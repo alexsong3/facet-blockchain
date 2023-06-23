@@ -44,7 +44,8 @@ function App() {
           contract
         })
       } else {
-        console.error("please, Install Metamask")
+        // console.error("please, Install Metamask")
+        info('Vui lòng tải ví MetaMask để thao tác- Mạng Sepolia test!')
       }
     }
     loadProvider()
