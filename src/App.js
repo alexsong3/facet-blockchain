@@ -120,72 +120,35 @@ function App() {
   }
 
   //Lấy lịch sử giao dịch contract
-  // const [dataHistory, setDataHistory] = useState([]);
-  // useEffect(() => {
-  //   const CONTRACT_ADDRESS = '0x525E99c025EF36c438D1Dd17a7AB200CD4382838'
-  //   const API_KEY_ETH = 'AIZUGF6YV1J2WJCKPXVBYV8D9QFR59Y6W8'
-  //   axios.get(`https://api-sepolia.etherscan.io/api?module=account&action=txlist&address=${CONTRACT_ADDRESS}&startblock=0&endblock=99999999&page=1&offset=3&sort=asc&apikey=${API_KEY_ETH}`)
-  //     .then(res => {
-  //       const dataOk = res.data;
-  //       console.log('111', dataOk)
-  //       if (dataOk?.status === '1') {
-  //         setDataHistory(dataOk?.result)
-  //       }
-  //     })
-  //     .catch(error => console.log(error));
+  const [dataHistory, setDataHistory] = useState([]);
+  useEffect(() => {
+    const CONTRACT_ADDRESS = '0x525E99c025EF36c438D1Dd17a7AB200CD4382838'
+    const API_KEY_ETH = 'AIZUGF6YV1J2WJCKPXVBYV8D9QFR59Y6W8'
+    axios.get(`https://api-sepolia.etherscan.io/api?module=account&action=txlist&address=${CONTRACT_ADDRESS}&startblock=0&endblock=99999999&page=1&offset=3&sort=asc&apikey=${API_KEY_ETH}`)
+      .then(res => {
+        const dataOk = res.data;
+        if (dataOk?.status === '1') {
+          setDataHistory(dataOk?.result)
+        }
+      })
+      .catch(error => console.log(error));
 
-  // }, [web3Api, shouldReload]);
+  }, [web3Api, shouldReload]);
 
-  // const columns = [
-  //   {
-  //     title: 'Transaction Hash',
-  //     dataIndex: 'name',
-  //     key: 'name',
-  //     render: (text) => <a>{text}</a>,
-  //   },
-  //   {
-  //     title: 'From',
-  //     dataIndex: 'from',
-  //     key: 'from',
-  //     width: 50
-  //   },
-  //   {
-  //     title: 'To',
-  //     dataIndex: 'to',
-  //     key: 'to',
-  //     width: 50
-  //   },
-  //   {
-  //     title: 'Tags',
-  //     key: 'tags',
-  //     dataIndex: 'tags',
-  //     render: (_, { tags }) => (
-  //       <>
-  //         {/* {tags.map((tag) => {
-  //           let color = tag.length > 5 ? 'geekblue' : 'green';
-  //           if (tag === 'loser') {
-  //             color = 'volcano';
-  //           }
-  //           return (
-  //             <Tag color={color} key={tag}>
-  //               {tag.toUpperCase()}
-  //             </Tag>
-  //           );
-  //         })} */}
-  //       </>
-  //     ),
-  //   },
-  //   {
-  //     title: 'Action',
-  //     key: 'action',
-  //     render: (_, record) => (
-  //       <div size="middle">
-  //         <a>Invite {record.name}</a>
-  //         <a>Delete</a>
-  //       </div>
-  //     ),
-  //   },
-  // ];
+  const columns = [
+    {
+      title: 'From',
+      dataIndex: 'from',
+      key: 'from',
+      width: 50
+    },
+    {
+      title: 'To',
+      dataIndex: 'to',
+      key: 'to',
+      width: 50
+    }
+  ];
 
   ///antd
   const [messageApi, contextHolder] = message.useMessage();
@@ -227,8 +190,7 @@ function App() {
 
         <hr />
         <a className="button is-link mr-5" href="https://sepolia.etherscan.io/address/0x525E99c025EF36c438D1Dd17a7AB200CD4382838" target="_blank">Transaction History</a>
-        {/* <div className="is-size-6">Lịch sử giao dịch</div>
-        <Table columns={columns} dataSource={dataHistory} /> */}
+        <Table columns={columns} dataSource={dataHistory} pagination={false} />
       </div>
     </div>
   );
