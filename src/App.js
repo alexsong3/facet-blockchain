@@ -163,7 +163,7 @@ function App() {
         <div className="is-size-5">DApp: The Joker</div>
         {/* <div className='is-size-5'>“Joker luôn muốn gợi lên phần đen tối trong mỗi con người!”</div> */}
         <div className="balance-view is-size-2">
-          Current Balance: <strong>{balance}</strong> ETH
+          Current Balance: <strong>{balance ? balance : 0}</strong> ETH
         </div>
         <button className="button is-primary mr-5"
           onClick={addFunds}
