@@ -43,10 +43,11 @@ function App() {
           provider,
           contract
         })
-      } else {
-        // console.error("please, Install Metamask")
-        info('Vui lòng tải ví MetaMask để thao tác- Mạng Sepolia test!')
       }
+      // else {
+      //   // console.error("please, Install Metamask")
+      //   info('Vui lòng tải ví MetaMask để thao tác - Mạng Sepolia test!')
+      // }
     }
     loadProvider()
   }, []);
@@ -117,7 +118,7 @@ function App() {
       await web3Api.provider.request({ method: "eth_requestAccounts" })
     } catch (error) {
       // console.log(error)
-      info('Vui lòng tải ví MetaMask để thao tác- Mạng Sepolia test!')
+      info('Vui lòng tải ví MetaMask để thao tác - Mạng Sepolia test!')
     }
   }
 
