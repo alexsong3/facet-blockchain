@@ -163,7 +163,7 @@ function App() {
     <div className="faucet-wrapper">
       {contextHolder}
       <div className="faucet">
-        <div className="is-size-5">DApp: Facet Blockchain</div>
+        <div className="is-size-5">DApp: Donate Blockchain</div>
         {/* <div className='is-size-5'>“Joker luôn muốn gợi lên phần đen tối trong mỗi con người!”</div> */}
         <div className="balance-view is-size-2">
           Current Balance: <strong>{balance ? balance : 0}</strong> ETH
